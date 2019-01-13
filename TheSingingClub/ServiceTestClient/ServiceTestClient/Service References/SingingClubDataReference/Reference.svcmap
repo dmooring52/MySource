@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2b7c0bd5-0691-4dcd-a8a2-7a2fd35e7779" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dmmlenovo1:5200/SingingClub.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SingingClub.xsd" MetadataType="Schema" ID="347119c1-b9ca-48f6-9f38-491fcd55c233" SourceId="1" SourceUrl="http://dmmlenovo1:5200/SingingClub.svc?xsd=xsd0" />
+    <MetadataFile FileName="SingingClub.disco" MetadataType="Disco" ID="9132007a-2c42-41fd-9fce-fd8be3652471" SourceId="1" SourceUrl="http://dmmlenovo1:5200/SingingClub.svc?disco" />
+    <MetadataFile FileName="SingingClub1.xsd" MetadataType="Schema" ID="fee8ab8b-52b2-473a-9a01-21d05730efb6" SourceId="1" SourceUrl="http://dmmlenovo1:5200/SingingClub.svc?xsd=xsd1" />
+    <MetadataFile FileName="SingingClub.wsdl" MetadataType="Wsdl" ID="96541d19-5b44-4f21-8d3d-7625ac509ef7" SourceId="1" SourceUrl="http://dmmlenovo1:5200/SingingClub.svc?wsdl" />
+    <MetadataFile FileName="SingingClub2.xsd" MetadataType="Schema" ID="4b8126b6-eb5c-4f91-969b-1bd9a94da06a" SourceId="1" SourceUrl="http://dmmlenovo1:5200/SingingClub.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

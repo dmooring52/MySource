@@ -1,0 +1,45 @@
+﻿@model QueueStation.Controllers.VenuesGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+@using (Html.BeginForm("PageAddSaveRevert", "Venues", FormMethod.Post, new { id = "submitForm" }))
+{
+    <div>
+        <b>&nbsp;</b>
+        @Model.grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            columns: Model.grid.Columns(
+                     Model.grid.Column("VenueKey", "Key", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenueKey", item.VenueKey)), canSort: false),
+                     Model.grid.Column("VenueName", "Name", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenueName", item.VenueName)), canSort: false),
+                     Model.grid.Column("VenueEmail", "Email", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenueEmail", item.VenueEmail)), canSort: false),
+                     Model.grid.Column("VenueAddress", "Address", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenueAddress", item.VenueAddress)), canSort: false),
+                     Model.grid.Column("VenueContact", "Contact", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenueContact", item.VenueContact)), canSort: false),
+                     Model.grid.Column("VenuePhone", "Phone", format: (item) => Html.Raw(Model.VenueData(item.VenueKey, "VenuePhone", item.VenuePhone)), canSort: false),
+               Model.grid.Column(null, null, format: item => Html.ActionLink("Edit", "PageEditVenue", "Venues", new { item.VenueKey }, new { @style = "font-size:smaller;text-decoration:underline;" }))
+        )
+    )
+    </div>
+    if (SessionBag.Current.IsKj == true)
+    { 
+    <div class="form-actions no-color">
+        <input id="addQueue" name="command" type="submit" value="Add" class="btn" />
+        <input id="saveQueue" name="command" type="submit" value="Save" class="btn" />
+        <input id="revertQueue" name="command" type="submit" value="Revert" class="btn" />
+    </div>
+    }
+}
+

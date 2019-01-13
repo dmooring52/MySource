@@ -1,0 +1,38 @@
+﻿@model QueueStation.Controllers.RootData
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<div class="jumbotron" style="color: firebrick">
+    <h2>W&nbsp;e&nbsp;l&nbsp;c&nbsp;o&nbsp;m&nbsp;e&nbsp;&nbsp;t&nbsp;o&nbsp;&nbsp;t&nbsp;h&nbsp;e&nbsp;&nbsp;S&nbsp;i&nbsp;n&nbsp;g&nbsp;i&nbsp;n&nbsp;g&nbsp;&nbsp;C&nbsp;l&nbsp;u&nbsp;b</h2>
+</div>
+<h4>Venue: @Html.Raw(Model.VenueName)&nbsp;(@Html.Raw(Model.VenueKey))</h4>
+<h4>Event: @Html.Raw(Model.EventName)&nbsp;(@Html.Raw(Model.EventKey))</h4>
+@using (Html.BeginForm("EventChange", "Home", FormMethod.Post, new { id = "TheSingingClub" }))
+{
+    @Html.TextBoxFor(m => m.EventKey, new { style = "display: none;" })
+    @Html.TextBoxFor(m => m.EventName, new { style = "display: none;" })
+    @Html.TextBoxFor(m => m.VenueKey, new { style = "display: none;" })
+    @Html.TextBoxFor(m => m.VenueName, new { style = "display: none;" })
+    <br />
+    <br />
+    @Html.DropDownListFor(model => model.EventSelection, Model.EventList,
+        new { onchange = "document.getElementById('TheSingingClub').submit();", style = "float: left" })
+    <label style="float: left">&nbsp;&nbsp;&nbsp;On Deck:&nbsp;</label>
+    @Html.DropDownListFor(model => model.OnDeckSelection, Model.OnDeckList, new { style = "float: left" })
+    <div class="form-actions no-color">
+        <br />
+        <br />
+        @if (SessionBag.Current.IsKj == true)
+        { 
+        <input id="launch" name="command" onclick="LaunchExe('C:\\Windows\\notepad.exe')" value="Launch" class="btn-default" style="float: left" />
+        }
+    </div>
+}

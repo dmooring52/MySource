@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C8C880F-FB9B-40CA-955D-B460E7B3AF6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Live</RootNamespace>
+    <AssemblyName>Microsoft.Live</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DESKTOP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Internal\ApiMethod.cs" />
+    <Compile Include="Internal\AuthConstant.cs" />
+    <Compile Include="Internal\AuthEndpointsInfo.cs" />
+    <Compile Include="Internal\AuthErrorCodes.cs" />
+    <Compile Include="Internal\DisplayType.cs" />
+    <Compile Include="Internal\DynamicDictionary.cs" />
+    <Compile Include="Internal\HttpMethods.cs" />
+    <Compile Include="Internal\IAuthClient.cs" />
+    <Compile Include="Internal\IServerResponseReaderObserver.cs" />
+    <Compile Include="Internal\IWebRequestFactory.cs" />
+    <Compile Include="Internal\LiveAuthClientCore.cs" />
+    <Compile Include="Internal\Operations\ApiOperation.cs" />
+    <Compile Include="Internal\Operations\ApiWriteOperation.cs" />
+    <Compile Include="Internal\Operations\DownloadOperation.cs" />
+    <Compile Include="Internal\Operations\GetUploadLinkOperation.cs" />
+    <Compile Include="Internal\Operations\Operation.cs" />
+    <Compile Include="Internal\Operations\OperationStatus.cs" />
+    <Compile Include="Internal\Operations\StreamCopyOperation.cs" />
+    <Compile Include="Internal\Operations\UploadOperation.cs" />
+    <Compile Include="Internal\Operations\WebOperation.cs" />
+    <Compile Include="Internal\Platform.cs" />
+    <Compile Include="Internal\QueryParameters.cs" />
+    <Compile Include="Internal\ResponseType.cs" />
+    <Compile Include="Internal\Serialization\IJsonSerializable.cs" />
+    <Compile Include="Internal\Serialization\IndentedTextWriter.cs" />
+    <Compile Include="Internal\Serialization\JsonReader.cs" />
+    <Compile Include="Internal\Serialization\JsonWriter.cs" />
+    <Compile Include="Internal\ServerResponseReader.cs" />
+    <Compile Include="Internal\StringBuilderExtension.cs" />
+    <Compile Include="Internal\Utilities\ErrorText.Designer.cs" />
+    <Compile Include="Internal\Utilities\LiveAuthRequestUtility.cs" />
+    <Compile Include="Internal\Utilities\LiveAuthUtility.cs" />
+    <Compile Include="Internal\Utilities\LiveUtility.cs" />
+    <Compile Include="Internal\WebRequestFactory.cs" />
+    <Compile Include="Public\IRefreshTokenHandler.cs" />
+    <Compile Include="Public\LiveAuthClient.cs" />
+    <Compile Include="Public\LiveAuthException.cs" />
+    <Compile Include="Public\LiveConnectClient.cs" />
+    <Compile Include="Public\LiveConnectClientTaskAsync.cs" />
+    <Compile Include="Public\LiveConnectException.cs" />
+    <Compile Include="Public\LiveConnectSession.cs" />
+    <Compile Include="Public\LiveConnectSessionStatus.cs" />
+    <Compile Include="Public\LiveLoginResult.cs" />
+    <Compile Include="Public\LiveOperationProgress.cs" />
+    <Compile Include="Public\LiveOperationResult.cs" />
+    <Compile Include="Public\OverwriteOption.cs" />
+    <Compile Include="Public\RefreshTokenInfo.cs" />
+    <Compile Include="Public\ThemeType.cs" />
+    <Compile Include="Web\LiveConnectClientExt.cs" />
+    <Compile Include="WP8\LiveDownloadOperationResult.cs" />
+    <Compile Include="WP8\ResourceHelper.cs" />
+    <Compile Include="WP8\Resources.Designer.cs" />
+    <Compile Include="WP8\SynchronizationContextWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fonts\LiveSymbol\LiveSymbol.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Internal\Utilities\ErrorText.resx" />
+    <EmbeddedResource Include="WP8\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

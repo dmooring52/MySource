@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingerQueuer", "SingerQueuer\SingerQueuer\SingerQueuer.csproj", "{6BF4EF9C-DAA6-40D4-A1AE-8947F0087BBD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9} = {47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfSingingClub", "WcfSingingClub\WcfSingingClub\WcfSingingClub.csproj", "{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTestClient", "ServiceTestClient\ServiceTestClient\ServiceTestClient.csproj", "{1A9C7714-C04D-4F39-81A0-42C81FF6B5E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9} = {47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolMaker", "ToolMaker\ToolMaker\ToolMaker.csproj", "{2745E186-BCAC-4943-998F-0A536614D53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaraokeQueuer", "KaraokeQueuer\KaraokeQueuer.csproj", "{65F4B7B1-313C-477C-BC9E-59EE27668CE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlUtility", "XmlUtility\XmlUtility.csproj", "{51F492E5-D6CB-4C99-91AB-F9E9B1E3ECE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BF4EF9C-DAA6-40D4-A1AE-8947F0087BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF4EF9C-DAA6-40D4-A1AE-8947F0087BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF4EF9C-DAA6-40D4-A1AE-8947F0087BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF4EF9C-DAA6-40D4-A1AE-8947F0087BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F08F1C-C358-45F2-A550-1FF5BE4DA7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9C7714-C04D-4F39-81A0-42C81FF6B5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9C7714-C04D-4F39-81A0-42C81FF6B5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9C7714-C04D-4F39-81A0-42C81FF6B5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9C7714-C04D-4F39-81A0-42C81FF6B5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2745E186-BCAC-4943-998F-0A536614D53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2745E186-BCAC-4943-998F-0A536614D53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2745E186-BCAC-4943-998F-0A536614D53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2745E186-BCAC-4943-998F-0A536614D53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F4B7B1-313C-477C-BC9E-59EE27668CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F4B7B1-313C-477C-BC9E-59EE27668CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F4B7B1-313C-477C-BC9E-59EE27668CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F4B7B1-313C-477C-BC9E-59EE27668CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F492E5-D6CB-4C99-91AB-F9E9B1E3ECE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F492E5-D6CB-4C99-91AB-F9E9B1E3ECE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F492E5-D6CB-4C99-91AB-F9E9B1E3ECE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F492E5-D6CB-4C99-91AB-F9E9B1E3ECE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

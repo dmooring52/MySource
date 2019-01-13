@@ -1,0 +1,96 @@
+﻿	public class <class> : INotifyPropertyChanged
+	{
+		public char state = '?';
+
+		private ColumnClass <privatevariable> = new ColumnClass("<publicvariable>", ColumnType._<variabletype>);
+
+		public <variabletype> <publicvariable> { get { return <privatevariable>.Value_<variabletype>; } set { <privatevariable>.Value_<variabletype> = value; NotifyPropertyChanged(); } }
+
+		public Dictionary<string, string> Headers = new Dictionary<string, string>();
+		public Dictionary<string, ColumnClass> Columns = new Dictionary<string, ColumnClass>();
+		public Dictionary<string, ColumnClass> Primary = new Dictionary<string, ColumnClass>();
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		<constructors>
+
+		public static bool operator ==(<class> a, <class> b)
+		{
+			if (System.Object.ReferenceEquals(a, b))
+				return true;
+			if ((object)a == null || (object)b == null)
+				return false;
+			return FieldsEqual(a, b);
+		}
+
+		public static bool operator !=(<class> a, <class> b)
+		{
+			return !(a == b);
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+				return false;
+			<class> a = obj as <class>;
+			if (a == null)
+				return false;
+			return FieldsEqual(this, a);
+		}
+
+		public bool Equals(<class> a)
+		{
+			if ((object)a == null)
+				return false;
+			return FieldsEqual(this, a);
+		}
+
+		private static bool FieldsEqual(<class> a, <class> b)
+		{
+			return (
+				(a.<publicvariable> == b.<publicvariable>) &&
+				(true)
+				);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		<fieldequals>
+
+		public string GetDataXml()
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine("<Root>");
+			sb.AppendLine("	<Data>");
+			foreach (KeyValuePair<string, ColumnClass> entry in Columns)
+			{
+				sb.AppendLine("		<COLUMNS>");
+				sb.AppendLine(string.Format("			<COLUMN_NAME>{0}</COLUMN_NAME>", entry.Key));
+				sb.AppendLine(string.Format("			<COLUMN_TYPE>{0}</COLUMN_TYPE>", entry.Value.CType));
+				sb.AppendLine(string.Format("			<COLUMN_VALUE>{0}</COLUMN_VALUE>", Utility.Encode4bit(entry.Value.Value)));
+				sb.AppendLine("		</COLUMNS>");
+			}
+			foreach (KeyValuePair<string, ColumnClass> entry in Primary)
+			{
+				sb.AppendLine("		<KEYS>");
+				sb.AppendLine(string.Format("			<COLUMN_NAME>{0}</COLUMN_NAME>", entry.Key));
+				sb.AppendLine(string.Format("			<COLUMN_TYPE>{0}</COLUMN_TYPE>", entry.Value.CType));
+				sb.AppendLine(string.Format("			<COLUMN_VALUE>{0}</COLUMN_VALUE>", Utility.Encode4bit(entry.Value.Value)));
+				sb.AppendLine("		</KEYS>");
+			}
+			sb.AppendLine("	</Data>");
+			sb.AppendLine("</Root>");
+			return sb.ToString();
+		}
+
+		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}

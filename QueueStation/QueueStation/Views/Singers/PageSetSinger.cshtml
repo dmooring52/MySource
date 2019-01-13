@@ -1,0 +1,16 @@
+﻿@model QueueStation.Controllers.SingersGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        Response.Redirect("/Singers/SingersView");
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+
+<h2>PageSetSinger</h2>
+

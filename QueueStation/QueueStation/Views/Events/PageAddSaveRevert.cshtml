@@ -1,0 +1,29 @@
+﻿@model QueueStation.Controllers.EventsGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        if (Model != null)
+        {
+            if (Model.command != null && (Model.command.ToLower() == "add"))
+            {
+                Response.Redirect("/Events/PageEditEvent?Command=add");
+            }
+            else
+            {
+                Response.Redirect("/Events/EventsView");
+            }
+        }
+        else
+        {
+            Response.Redirect("/Events/EventsView");
+        }
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<h2>PageAddSaveRevert</h2>
+

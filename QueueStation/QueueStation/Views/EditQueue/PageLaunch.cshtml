@@ -1,0 +1,22 @@
+﻿@model QueueStation.Controllers.QueueGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        if (Model != null && Model.QueueRound > 0)
+        {
+            Response.Redirect(string.Format("/QueueRound/RoundView?QueueRound={0}", Model.QueueRound));
+        }
+        else
+        {
+            Response.Redirect("/QueueRound/RoundView?QueueRound=1");
+        }
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<h2>PageLaunch</h2>
+

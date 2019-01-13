@@ -1,0 +1,14 @@
+﻿@model QueueStation.Controllers.VenuesGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        Response.Redirect("/Venues/VenuesView");
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<h2>PageSetVenue</h2>

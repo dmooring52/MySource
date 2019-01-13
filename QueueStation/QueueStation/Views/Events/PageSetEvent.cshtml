@@ -1,0 +1,16 @@
+﻿@model QueueStation.Controllers.EventsGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        Response.Redirect("/Events/EventsView");
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+
+<h2>PageSetEvent</h2>
+

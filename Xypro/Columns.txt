@@ -1,0 +1,94 @@
+int employeeId
+string firstName
+string lastName
+string jobDescription
+string departmentName
+int managerId
+DateTime dateHired
+DateTime lastPasswordChange
+
+
+employeeId
+firstName
+lastName
+jobDescription
+departmentName
+managerId
+dateHired
+lastPasswordChange
+
+Dim employeeId As Integer
+Dim firstName As String
+Dim lastName As String
+Dim jobDescription As String
+Dim departmentName As String
+Dim managerId As Integer
+Dim dateHired As DateTime
+Dim lastPasswordChange As DateTime
+
+
+        Dim fstate As FilterState
+        If IsNothing(dataGrid.Tag) = False Then
+            fstate = CType(dataGrid.Tag, FilterState)
+            If IsNothing(fstate) = False And fstate.CurrentState = eState.filled Then
+                If e.ColumnIndex >= 0 And e.ColumnIndex < dataGrid.ColumnCount And e.RowIndex < viewgrid.Count Then
+                    If IsNothing(dataGrid.Rows(e.RowIndex).Cells(e.ColumnIndex).Tag) Or (Not CType(dataGrid.Rows(e.RowIndex).Cells(e.ColumnIndex).Tag, String) = "Set") Then
+                        'e.Value = GetRow(e.RowIndex, e.ColumnIndex)
+                        dataGrid.Rows(e.RowIndex).Cells(e.ColumnIndex).Tag = "Set"
+                    Else
+                        e.Value = GetRow(e.RowIndex, e.ColumnIndex)
+                    End If
+                End If
+            End If
+        End If
+
+
+        'dataGrid.Rows.Add(1)
+        Dim fstate As FilterState
+        If IsNothing(dataGrid.Tag) = False Then
+            fstate = CType(dataGrid.Tag, FilterState)
+            If IsNothing(fstate) = False Then
+                fstate.stateviewlistptr += 1
+                DoBind(fstate)
+            End If
+        End If
+
+
+    Private Sub dataGrid_KeyUp(sender As Object, e As KeyEventArgs) Handles dataGrid.KeyUp
+        Dim fstate As FilterState = Nothing
+        If IsNothing(dataGrid.Tag) = False Then
+            fstate = CType(dataGrid.Tag, FilterState)
+        End If
+        If e.KeyCode = Keys.Down Then
+            If dataGrid.CurrentRow.Index = dataGrid.RowCount - 1 Then
+                fstate.statecachelistptr += 1
+                DoBind(fstate)
+            End If
+        ElseIf e.KeyCode = Keys.Up Then
+            If dataGrid.CurrentRow.Index = 0 Then
+                If (fstate.statecachelistptr > 0) Then
+                    fstate.statecachelistptr -= 1
+                    DoBind(fstate)
+                End If
+            End If
+        ElseIf e.KeyCode = Keys.PageUp Then
+            If (fstate.statecachelistptr > 0) Then
+                If fstate.statecachelistptr > fstate.stateviewlistsize Then
+                    fstate.statecachelistptr -= fstate.stateviewlistsize
+                Else
+                    fstate.statecachelistptr = 0
+                End If
+                DoBind(fstate)
+            End If
+        ElseIf e.KeyCode = Keys.PageDown Then
+            If fstate.statecachelistptr < (fstate.statecachelistsize - fstate.stateviewlistsize) Then
+                If (fstate.statecachelistptr + fstate.stateviewlistsize) < (fstate.statecachelistsize - fstate.stateviewlistsize) Then
+                    fstate.statecachelistptr += fstate.stateviewlistsize
+                Else
+                    fstate.statecachelistptr = fstate.statecachelistsize - fstate.stateviewlistsize
+                End If
+                DoBind(fstate)
+            End If
+        End If
+    End Sub
+

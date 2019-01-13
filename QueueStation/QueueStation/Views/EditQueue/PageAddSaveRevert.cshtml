@@ -1,0 +1,40 @@
+﻿@model QueueStation.Controllers.SingerRound
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        if (Model != null && Model.round > 0)
+        {
+            if (Model.command != null && (Model.command.ToLower() == "edit" || Model.command.ToLower() == "add"))
+            {
+                Response.Redirect(string.Format("/EditQueue/PageEditQueue?QueueRound={0}", Model.round));
+            }
+            else
+            {
+                Response.Redirect(string.Format("/QueueRound/RoundView?QueueRound={0}", Model.round));
+            }
+        }
+        else
+        {
+            Response.Redirect("/QueueRound/RoundView?QueueRound=1");
+        }
+    }
+    else
+    { 
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+}
+
+<h2>PageAddSaveRevert</h2>
+

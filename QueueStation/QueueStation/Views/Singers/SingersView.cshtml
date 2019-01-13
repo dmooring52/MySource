@@ -1,0 +1,42 @@
+﻿@model QueueStation.Controllers.SingersGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+@using (Html.BeginForm("PageAddSaveRevert", "Singers", FormMethod.Post, new { id = "submitForm" }))
+{    
+    <div>
+        <b>&nbsp;</b>
+        @Model.grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            columns: Model.grid.Columns(
+                Model.grid.Column("SingerKey", "Key", format: (item) => Html.Raw(Model.SingerData(item.SingerKey, "SingerKey", item.SingerKey)), canSort: false),
+                Model.grid.Column("SingerName", "Name", format: (item) => Html.Raw(Model.SingerData(item.SingerKey, "SingerName", item.SingerName)), canSort: false),
+                Model.grid.Column("SingerEmail", "Email", format: (item) => Html.Raw(Model.SingerData(item.SingerKey, "SingerEmail", item.SingerEmail)), canSort: false),
+            Model.grid.Column(null, null, format: item => Html.ActionLink("Edit", "PageEditSinger", "Singers", new { item.SingerKey }, new { @style = "font-size:smaller;text-decoration:underline;" }))
+        )
+    )
+    </div>
+    if (SessionBag.Current.IsKj == true)
+    {
+    <div class="form-actions no-color">
+        <input id="addQueue" name="command" type="submit" value="Add" class="btn" />
+        <input id="saveQueue" name="command" type="submit" value="Save" class="btn" />
+        <input id="revertQueue" name="command" type="submit" value="Revert" class="btn" />
+    </div>
+    }
+}
+

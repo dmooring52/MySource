@@ -1,0 +1,31 @@
+﻿@model QueueStation.Controllers.VenuesGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+    if (Model != null)
+    {
+        if (Model.command != null && (Model.command.ToLower() == "add"))
+        {
+            Response.Redirect("/Venues/PageEditVenue?Command=add");
+        }
+        else
+        {
+            Response.Redirect("/Venues/VenuesView");
+        }
+    }
+    else
+    {
+        Response.Redirect("/Venues/VenuesView");
+    }
+}
+
+<h2>PageAddSaveRevert</h2>
+
+
+

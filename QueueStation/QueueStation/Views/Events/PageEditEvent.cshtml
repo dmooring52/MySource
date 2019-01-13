@@ -1,0 +1,134 @@
+﻿@model QueueStation.Controllers.MVCEvents
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+@functions{
+    public string EventsShowVenues()
+    {
+        if (Model.VenueList == null || Model.VenueList.Count == 0)
+        {
+            return "&nbsp;";
+        }
+        else
+        {
+            return "Venue";
+        }
+    }
+    public string EventsShowEvent()
+    {
+        if (Model.VenueList == null || Model.VenueList.Count == 0)
+        {
+            return "";
+        }
+        else
+        {
+            return "EventKey";
+        }
+    }
+    public string GetStyle()
+    {
+        if (Model.VenueList == null || Model.VenueList.Count == 0)
+        {
+            return "display: none";
+        }
+        else
+        {
+            return "";
+        }
+    }
+    public string DefaultKey()
+    {
+        if (Model.EventKey == null || Model.EventKey.Trim().Length == 0)
+            return "IAG " + TimeString();
+        else
+            return Model.EventKey;
+                
+    }
+    public string DefaultName()
+    {
+        if (Model.EventName == null || Model.EventName.Trim().Length == 0)
+            return "Friday Karaoke";
+        else
+            return Model.EventName;
+    }
+    public string DefaultDate()
+    {
+        if (Model.EventDate == null || Model.EventDate == DateTime.MinValue)
+            return DateTime.Now.ToShortDateString();
+        else
+            return Model.EventDate.ToShortDateString();
+    }
+    public string TimeString()
+    {
+        return DateTime.Now.Year.ToString() + "-" + twodigit(DateTime.Now.Month) + "-" + twodigit(DateTime.Now.Day);
+    }
+    private string twodigit(int val)
+    {
+        if (val < 10)
+            return "0" + val.ToString();
+        else
+            return val.ToString();
+    }
+}
+@{var dnull = "";}
+
+<hgroup class="title">
+    <h1 id="demo">@Html.Raw((Model == null) ? dnull : Model.VenueKey)</h1>
+</hgroup>
+<div class="row-fluid">
+    <div class="span6">
+        <section id="EventsEditForm">
+            @using (Html.BeginForm("PageSetEvent", "Events", FormMethod.Post))
+            {
+                <fieldset class="form-horizontal">
+                    <legend>@Html.Raw((Model == null || Model.EventKey == null || Model.EventKey.Trim().Length == 0) ? "New Event" : "Event: " + Model.EventKey)</legend>
+                    <div class="control-group">
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.VenueKey, new { style = "display: none;" })
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <table>
+                            <tr style="@Html.Raw(GetStyle())">
+                                <td>@Html.Label("Venue", new { @class = "control-label", @style = Model.VenueKey == null || Model.VenueList.Count == 0 ? "display:none;" : "" })</td>
+                                <td><div class="controls">@Html.DropDownListFor(m => m.VenueList, new SelectList(ViewData.Model.VenueList), new { style = Model.VenueKey == null || Model.VenueList.Count == 0 ? "display:none;" : "display:block;" })</div></td>
+                            </tr>
+                            <tr style="@Html.Raw(GetStyle())">
+                                <td>@Html.Label("Key", new { @class = "control-label", @style = Model.VenueKey == null || Model.VenueList.Count == 0 ? "display:none;" : "" })</td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.EventKey, new { @class = "standard-wide-box", @Value=DefaultKey(), @style = Model.VenueKey == null || Model.VenueList.Count == 0 ? "display:none;" : "display:block;" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Name</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.EventName, new { @class = "standard-wide-box", @Value=DefaultName() })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Date</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.EventDate, new { @class = "standard-wide-box", @Value=DefaultDate() })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Address</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.EventAddress, new { @class = "medium-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Email</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.EventEmail, new { @class = "wide-box" })</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-actions no-color">
+                        <br />
+                        <input id="saveEdit" name="command" type="submit" value="Done" class="btn" />
+                        <input id="removeItem" name="command" type="submit" value="Remove" class="btn" />
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>

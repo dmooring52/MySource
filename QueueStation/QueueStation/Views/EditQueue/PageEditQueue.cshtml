@@ -1,0 +1,124 @@
+﻿@model QueueStation.Controllers.MVCQueue
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+@functions{
+    public string QueueStateStyle(string state)
+    {
+        if (Model.QueueState.Trim().Length == 0)
+        {
+            if (state.ToLower() == "pending")
+                return "class=\"img-black\"";
+            else
+                return "class=\"img\"";
+        }
+        else if (Model.QueueState.ToLower().StartsWith(state.ToLower()) == true)
+        {
+            return "class=\"img-black\"";
+        }
+        else
+        {
+            return "class=\"img\"";
+        }
+    }
+    public string QueueShowSingers()
+    {
+        if (Model.SingerList == null || Model.SingerList.Count == 0)
+        {
+            return "&nbsp;";
+        }
+        else
+        {
+            return "Singer";
+        }
+    }
+    public string QueueStateParams(string state)
+    {
+        if (Model == null)
+            return "";
+        else
+            return "PageSetRound?SingerKey=" + Model.SingerKey + "&QueueRound=" + Model.QueueRound + "&QueueState=" + state;
+    }
+}
+@{var dnull = "";}
+
+<hgroup class="title">
+    <h1 id="demo">@Html.Raw((Model == null) ? dnull : Model.SingerKey)</h1>
+</hgroup>
+<div class="row-fluid">
+    <div class="span6">
+        <section id="QueueEditForm">
+            @using (Html.BeginForm("PageSetRound", "EditQueue", FormMethod.Post))
+            {
+                <fieldset class="form-horizontal">
+                    <legend>Round: @Html.Raw((Model == null) ? 0 : Model.QueueRound)</legend>
+                    <div>
+                        <table>
+                            <tr>
+                                <td><img id="finished" @Html.Raw(QueueStateStyle(@"Finish")) src="/Images/State_Finished.png" alt="Finished" onclick="SetState('f')" /></td>
+                                <td><img id="gonehome" @Html.Raw(QueueStateStyle(@"Gone")) src="/Images/State_GoneHome.png" alt="Gone Home" onclick="SetState('g')" /></td>
+                                <td><img id="nothere" @Html.Raw(QueueStateStyle(@"Not")) src="/Images/State_NotHereYet.png" alt="Not Here" onclick="SetState('n')" /></td>
+                                <td><img id="pending" @Html.Raw(QueueStateStyle(@"Pending")) src="/Images/State_Pending.png" alt="Pending" onclick="SetState('p')" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.EventKey, new { style = "display: none;" })
+                            @Html.TextBoxFor(m => m.SingerKey, new { style = "display: none;" })
+                            @Html.TextBoxFor(m => m.QueueRound, new { style = "display: none;" })
+                            @Html.TextBoxFor(m => m.QueueOrder, new { style = "display: none;" })
+                        </div>
+                    </div>
+                    @Html.TextBox("theQueueState", "", new { style = "display: none;" })
+                    <input id="queuestate" type="hidden"/>
+                    <div class="control-group">
+                        <table>
+                            <tr>
+                                <td><label class="control-label" >@Html.Raw(@QueueShowSingers())</label></td>
+                                <td><div class="controls">@Html.DropDownListFor(m => m.SingerList, new SelectList(ViewData.Model.SingerList), new { style = Model.SingerList==null || Model.SingerList.Count == 0 ? "display:none;" : "display:block;" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Song</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.QueueSong, new { @class = "standard-wide-box", @oncopy = "hi" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Artist</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.QueueArtist, new { @class = "standard-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Note</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.QueueNote, new { @class = "medium-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Link</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.QueueLink, new { @class = "wide-box" })</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-actions no-color">
+                        <input id="saveEdit" type="submit" value="Done" class="btn" />
+                    </div>
+                    <br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td><label class="control-label" style="color:gray">Stage</label></td>
+                            <td><div class="controls"><input id="clipbox" class="medium-wide-box" /></div></td>
+                            <td><div class="controls"><input id="clipcut" type="button" value="cut" style="color:gray" onclick="cutboard()" /></div></td>
+                            <td><div class="controls"><input id="clipcopy" type="button" value="copy" style="color:gray" onclick="copyboard()" /></div></td>
+                            <td><div class="controls"><input id="clippaste" type="button" value="paste" style="color:gray" onclick="pasteboard()" /></div></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>

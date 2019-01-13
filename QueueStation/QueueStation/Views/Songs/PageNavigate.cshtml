@@ -1,0 +1,21 @@
+﻿@model QueueStation.Controllers.SongsGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+    int i = 0;
+    if (Model != null)
+    { 
+        i = Model.offset;
+   }
+    Response.Redirect(string.Format("/Songs/SongsView?offset={0}", i));
+    ViewBag.Title = "PageNavigate";
+}
+
+<h2>PageNavigate</h2>
+

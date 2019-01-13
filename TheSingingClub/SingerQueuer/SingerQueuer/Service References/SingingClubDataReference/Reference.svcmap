@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cc4d6be4-74a9-4dd6-9d2d-cc43edc50267" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SingingClubRestService.xsd" MetadataType="Schema" ID="9e50c114-afcf-434c-b201-99ba98389af5" SourceId="1" SourceUrl="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SingingClubRestService.wsdl" MetadataType="Wsdl" ID="ef9f3426-4bac-41c1-a9b0-fdda6686817a" SourceId="1" SourceUrl="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc?wsdl" />
+    <MetadataFile FileName="SingingClubRestService.disco" MetadataType="Disco" ID="91a1abdf-0ff5-4908-bdfa-e37a6b27d935" SourceId="1" SourceUrl="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc?disco" />
+    <MetadataFile FileName="SingingClubRestService1.xsd" MetadataType="Schema" ID="27cce35e-12ed-452d-a00c-91978609e1a2" SourceId="1" SourceUrl="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SingingClubRestService2.xsd" MetadataType="Schema" ID="5ee87084-7227-41f5-95bc-49afbcb739ab" SourceId="1" SourceUrl="http://dmooring52-001-site3.htempurl.com/SingingClubRestService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

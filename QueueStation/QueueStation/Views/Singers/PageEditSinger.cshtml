@@ -1,0 +1,71 @@
+﻿@model QueueStation.Controllers.MVCSingers
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+@functions{
+    public string SingersShowSinger()
+    {
+        if (Model.command == "add")
+        {
+            return "";
+        }
+        else
+        {
+            return "SingerKey";
+        }
+    }
+    public string AddStyle()
+    {
+        if (Model.command != "add")
+        {
+            return "display: none";
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+
+<div class="row-fluid">
+    <div class="span6">
+        <section id="SingersEditForm">
+            @using (Html.BeginForm("PageSetSinger", "Singers", FormMethod.Post))
+            {
+                <fieldset class="form-horizontal">
+                    <br />
+                    <br />
+                    <legend>@Html.Raw((Model == null || Model.SingerKey == null || Model.SingerKey.Trim().Length == 0) ? "Add Singer" : "Singer: " + Model.SingerKey)</legend>
+                    <div class="control-group">
+                        <table>
+                            <tr style="@Html.Raw(AddStyle())">
+                                <td><label class="control-label">Key</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.SingerKey, new { @class = "standard-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Name</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.SingerName, new { @class = "standard-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Email</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.SingerEmail, new { @class = "wide-box" })</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-actions no-color">
+                        <br />
+                        <input id="saveEdit" name="command" type="submit" value="Done" class="btn" />
+                        <input id="removeItem" name="command" type="submit" value="Remove" class="btn" />
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>
+

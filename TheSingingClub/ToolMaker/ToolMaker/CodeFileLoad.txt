@@ -1,0 +1,37 @@
+﻿		private void Load<class>(string xml)
+		{
+			gd_<classname> = new BindingList<<class>>();
+			db_<classname> = new List<<class>>();
+			if (xml.Trim().Length > 0)
+			{
+				if (Utility.IsValidXml(xml))
+				{
+					XmlDocument doc = new XmlDocument();
+					doc.LoadXml(xml);
+					XmlNodeList nodelist = doc.SelectNodes("/Root/Data");
+					if (nodelist != null)
+					{
+						foreach (XmlNode node in nodelist)
+						{
+							<class> <classname> = new <class>();
+							<classname>.<publicvariable> = Utility.GetXmlString(node, "<publicvariable>");
+							gd_<classname>.Add(<classname>);
+						}
+						foreach (<class> <classname> in gd_<classname>)
+						{
+							db_<classname>.Add(new <class>(<classname>));
+						}
+					}
+				}
+				else
+				{
+					MessageBox.Show(xml);
+				}
+			}
+			else
+			{
+			}
+			dataGridView<shortclass>.DataSource = gd_<classname>;
+			dataGridView<shortclass>.Columns["<publicvariable>"].DataPropertyName = "<publicvariable>";
+			SetHeaders();
+		}

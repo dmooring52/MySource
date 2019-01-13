@@ -1,0 +1,281 @@
+/*! jQuery UI - v1.8.24 - 2012-09-28
+* https://github.com/jquery/jquery-ui
+* Includes: jquery.ui.core.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.progressbar.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.slider.css, jquery.ui.tabs.css, jquery.ui.theme.css
+* Copyright (c) 2012 AUTHORS.txt; Licensed MIT */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:before, .ui-helper-clearfix:after { content: ""; display: table; }
+.ui-helper-clearfix:after { clear: both; }
+.ui-helper-clearfix { zoom: 1; }
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion { width: 100%; }
+.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
+.ui-accordion .ui-accordion-li-fix { display: inline; }
+.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
+.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
+.ui-accordion .ui-accordion-content-active { display: block; }
+
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.24
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Licensed under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+
+.ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; } /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+
+.ui-progressbar { height:2em; text-align: left; overflow: hidden; }
+.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px; display: block; }
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+.ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottµ èBˆ²}K> >‡4İ
+  °   å    fileneed ventlisBt <r.h p)U F @N@E@L@::Notif
+y< XA645 BFC91D3B 795A!10369531  81e2a2c c9a41e0f 0e21bec6 9de8d0f1*b#0 a.0  Ìİîÿ€ ‘ÕÔT€~¸   \  ºl¤¾Âs6€	€drive .cpp  € getFol derByRelat PathF`romDB ¦6+zƒ6t€’Ås@tatusn­ier=M  -;€´S‚¼€::€LogItem	"c Jon %M ountPoint%ÀSetR¼ooÄ/A-eFÅ*¯ Û ÿ*sƒ0Ã*QÀÉ* \Karaoke \CDG_MP3 \Carol\S YB-1107\ Blake Sh elton -  All Abou t Tonigh t.cdg€W S@yncing¥9¯ZƒdFÁ8À À l ocalchangescm  †À@dleLACCALC_CR EATE_FIL@E 5@] &„M]D>@ Qá "ƒ IreateÁ† Remotely¬AdÀòå<F¤xAC` ±É  @  addáIfEx9`€sIÀß6×6Ho@ney Beàkds4$˜gc4…t š 	Áfdb¡3  aÁDB::Ge tNewDBEn tryPos´nÁŸ2¤L  o îN@A «N „aA¥ÀRecordáqd;.¡!5%¡	u4/ Á˜&ğL„§€//¢Õs‚`=Áw` €bsy5@µmáAÀ!~op„en¡Readß3¿»jÊ3 _JŸÌŸÌdŸÌ ŸÌ„ÏB.È3a0 448228c8 7af1560c bb1ab375`1b66caŸÌ ÿ/"ŸÌ&ğŸÌ <ŸÌ_ÚëâıŸÌfOfeOfOfOfÉOferOf  ïwc#½µ
+§ ! Of¿
+l¿
+ÿqCfï0OfOfGfê0Ïeçß…Ü…Ïe  ÏeÏeÏeıÅe?ÏeÏ„LÏeßÏe|lCÏeÏe/å¦Åe|³$ÏeppÏeÂeM Ïe?5Lady  AntebellumPJust àA Kis€{fo(kc(f f AVfoøsŒf?§¹fÙïff¨¶±H7![÷“¯fCu{A0 ffüad/55/,Of¯%ŸÌ3ŸÌŸÌRŸÌrş:ŸÌ@OfŸÌÎbd9ğe692b9f 2c60a1cd b3328a54À6ac79eOf/gŸÌ0ÔOfß>Ô>Of ş ŸÌŸÌáZŸÌÓ{ÓOf3,ŸÌŸÌŸÌÎƒ[ŸÌ ¦ ŸÌq \?Ş4µ
+º«S# OfOfOfLOfÿ³
+/1/1/1_KVKfff2şF$ı´    local changes. cppm  C ¸ ˆdleLtCt TLC_CR EATE_FIL E 5>]  Ìİîÿ 4 ‘ÕÔ T  ¸   \  ºl ¾ÂèBˆ²} K>>‡4M ò  < >X }á " 	}rea teFileRe motelyAd¨ded%uFu‚ UCuÉ    add3IfEx istsS€%M ountPoin t%\Karao ke\CDG_M P3\Carol \SYB-110 7\Jason  Aldean -  Don't Y ou Wanna  Stay.cdÒg¥\gƒ—6[€J
+€f ƒdbÓ0  €XDB ::GetNew DBEntryP`osd!¶¦ÎLu@ÀNÀ  KN	C…ERecor@dItem A 645BFC91 D3B795A!à69538E AÕ< /Á˜&ğL „§//¢Õs‚tÃ<À  9 ±Á<sysÀÁ=A@5B@openA#Røead?jjC.·¶İÀKÁ[å€&  .nee «eventlÀ”enerh.h )À Á/NEL::N otify‡ QY103_ @1 e781e942 65459d03 55b2cb11€b1a5c38ÁÎ0 ALÓ;.0K$s+Y€I dri4ve:@> … getFo`grBy RelatÀPa thFromDB§ ¿¤+£t` $bHtatusZnA+i 0`M <-? - s / ::XLogÁ[Éc€onO©‚ SetøRooä¡ßFc¢eş±€A cc?˜0˜ , Sync¬inŸ™„2¯Ä°F÷Ñ°_ÏIÏ=_Ï_Ïß_Ï·_ÏŞEÏ€xTÏQ@_ÏGÏLuke BryÏRain  Is A Gooğd Thà4Ï‡zg BXdggs<%ÿgo×gÙgg‹gü40a8Ã‰gCCA0 ggadoï‚‚oogog?•5•ÿogÃogogpiogog½}og640!ec71 6853ad67 742ae772 a2bf5e1dà126c91_góogS…40og§4Gogö ogogeogA!ï­Û>{og£sogogDiogiüfiogÁ¨ogÀrß.Ó.»İŠµ
+¯0 ogf/rşe/r/r"ro1o1o1ßKÚKOgÇÇOgÿÎOglûÿÎöÎ<Ogï'ä'ÿÎßùOglCÿÎÿÎAAOgí_ÉÿÎ §sooi€Reba McÇire ÏTurn On ge RaødioOguOgã3ÃOgßÎos)OgOg¿OgßÎ!©OgOgLg1ÿ5o8OgÙÎOgßÎ×ÎooooThe"µ  Radio.c dg   Ìİîÿ 0 ‘ÕÔ T  ¸   \  ºl¾ ÂèBˆ²}K >>‡4İ
+  Y x å°  f€ileneed  ventlist¡ r.h 8) ªF @N@E@L@ ::Notify ,A645B FC91D3B7 95A!10369541   3fe68f5d 44c3dacc e9b54f62 fa88ef72•#0 –0.0&´s6 &	  drive.cp p   ¨ g etFolder€ByRelat  PathFromLDB%Å+ƒ6t€’Åstatˆusn­ier=ÚM€ğ-€´S‚¼@::LogItem‰c %on %MountP@oint%ÀSàetRooÄ/A-í*n¯  ÿ*sƒ0Ã*QÀÉ*\Karao ke\CDG_M P3\Carol \SYB-110 7\Reba M cEntire  - Turn O`n The‡Å€W €Syncing¥9´¯ƒdFÁ8À À  localchangescm  À@dleLACCALC_C REATE_FI@LE 5;]çæM]D>@ Qá "ƒ IreateaC Remotely\Ad`y#‚F¤€‡A` ±É  @  addáIfEx`€sß6Ì6odn ey AtkinsÀ6Farmer 's Daughšt]d5$™gc5K…u › Ágdb¡4  a‚ÁDB: :GetNewDB@FryPosìÜ,Á _ƒ¤L á¬vN¤$«N …aB¥Ràecordáre.¢!Ÿ3%
+u5/Á ˜&ğL„§/À/¢Õs‚`ÁN¤€bsy@¶máAÀ!opená¡Readß4ß4Î4¯!_LŸÎŸÎdŸÎ ŸÎ„ÑB/Êff77a b1e43f43 d8137c0c 65b6b9a2Ø289aŸÎ /"ÿŸÎ&òŸÎ€=ŸÎÿÿğ½Og $OgOgfOgó‰\Og  Og¿
+¿
+¸
+óOgr  ¿
+¿
+OgrÿOgo1ßKÜKOg/™,™Og¼  OgOgOgEg:OgŸ¡„MOgßOglCOgoOgo¨e¨Eg~„LOgpöpOgBgO ¿‚¿‚µ‚ Taylor Swift0gBac k To Decğembeğ•/gÏ³sL/gÃ3d/g/gsÄ0ÿ/g¯º§º/gÙ/g/gH¸ıQI8A¿[Ã/gcv}A0 /g/gadOşaONgï%_Î·S_Î_Î ár_Îr_Î_Î_ÎÖÏ‚Âd7f6 3c92b749 3824cf8d 7efeb590Ø6f9gßg0_Î=._Î_,S,g  ÿ_Î_Î_ÎÁççgS,—_Î_Î“ee Lo_Îó_Î_Îer_Îo#e#µ
+ú­S# _Î!ea–¿
+¿
+ˆÚSÎO1O1YÎO1I1å´ r.cdg    SyncingÌİîÿ h ‘Õ ÔT  ¸   \  º l¾ÂèBˆ² }K>>‡4¯d   x FX  localch anges.cpÀpm   . "ĞdleL:C:Z LC_CREAT E_FILE 5P9]  %}M}>× ]}á " 	} reateFil eRemotel@yAdded¥:F„:9€‘:É B   add3I fExistsR %MountP oint%\Ka raoke\CD G_MP3\Ca rol\SYB-@1107\S   Evans -  A Little  Bit StrNo °‚Û%\gÖ6+€B
+ f€‚dbÁÓ  @Á+ DB::GetN ewDBEntr€yPosœ4AzÕ&gL@ÀNÀ  KN	…ERec ordItem A645BFC 91D3B795€A!69549E AÕ</Á˜& ğL„§//¢ÕĞs‚Ã<€À Å 9 Á<sysÀÁ=
+A@5@openáA#ReadÿiÑiACmåjİ€K[å@& # Á-nee€ªeventl@”eneĞr.h )À /*NEL::@Notify‡£ ÎX103w/   23b64b50 931d9597 c33bc6c2 0733a894a0 !L³;.0_K¤sY`I drhiveá9 > •  getFolde rByRelatÀPathFro¸mDB ¿¤+à¢=A1t` $BHtaĞtusnA+i 0 ÚM <- -S¢/Á ::Log¡[É²c€onaOi‚ ÀSetRooä¡÷ßFã±e°€A ÿcÿbÿ—ï—ÿÎÿÎ€uÿÎløÎ8ÿÎ¦ŞÿÎpŞpÿÎÿÎkíåÎr;` uÿÎeåÎCÀÿÎwgT aylor SwiftgMean_‚_(_Qf BWdãffst8f?ˆ7ˆŸfÙff‹f50ßP_B”f3IqA0 óffad	ÿ‚Ÿe/›%›ŸeãŸeŸe? gŸeŸeİ{ŸeV}50Qc6ce216a 3ff38ae4 52e87a4b 7cacd655>f1eŸesƒ50Ÿeÿ¬ŸerŸe`Ÿee¿Ÿeáß³=Ÿe£sŸeÇŸetgŸeifiŸeÑ¦¿Ÿeğp?=?=1=µ
+¡ë0 Ÿef_pe_p_pRpÿ000J¯d/Ì/Ì/Ìß/Ì/ÌÎAX-Ì7¯d'3'¯d  l¯dlC¿/Ì/Ì?@5@¯d_É/Ì=ğ¤s‡inıPšdæææ¯d#2¯dá?ËosL<¯d¯d¯dß?Ë‘¥¯d¯d¬d1Q3ÿ¯6£6¯d¯d§?Ë8Ë„µ - Mine.c dg   Ìİîÿ 0 ‘ÕÔ T  ¸   \  ºl¾ ÂèBˆ²}K >>‡4İ
+  Y x å°  f€ileneed  ventlist¡ r.h 8) ªF @N@E@L@ ::Notify ,A645B FC91D3B7 95A!10369551   775986c2 d43e3704 82ad1cfa 706f5f0b•#0 –0.0&´s6 &	 driv€²pp   ¨ get FolderBy Relat Pa thFromDBÓ%Å+ƒ6t€’Åstatusn­ier.cp´pM€ğ-€´S‚¼@::LogI(tem‰c %on %Mount€Point%ÀÀSetRooÄ/A-İí*¡  ÿ*sƒ0Ã*CÀÉ*\Kara oke\CDG_ MP3\Caro l\SYB-11 07\Taylo r Swift Â T Synci¤ng%6¯aFA5À À local€changes_`m  À@dhleLACCAL C_CREATE _FILE 56ê]gãMD>@ Qá " Ireate¡ARemotàelyAd wc€:F¤wA` ±É„  @  addáIfEx ~sHÀ55he Ban€d Perry@5ÀYou LiÂ–ß¹ÃgC4¥r ˜ ád„db3  ¡DB::Get NewDBEnt ryPos$@·á€¤L ªN ;A «N@‚AA¥Reğcordp!bNŸAœ5%¡	u/Á˜ &ğL„§//`¢Õs‚€ÁvO` €bsy`³máAÀA|opená¡Read¿3Ìh¸3ÿa ?4#4ŸÊŸÊŸÊŸÊ€Í".Æba2384 1fd130f9 9e56077b 0e2444f8ÌccaŸÊ  s:ŸÊ&îŸÊà;ŸÊÿûò}Oe ïƒ#OeOefOe‰ZOe|  Oe¿
+¿ˆ°ˆµ
+¦ ! OeÑÁ.pC	eârpifiCeß0OeJeß0¶JŸeŸ–œ–Ÿe Ş ŸeŸeŸe•e5ŸeÏdLŸeßŸelCŸeŸe7ß¥Õ¥•e~ŸeppûŸe’eO Ÿe/€&€İ If I Dieò  fngq±ïK?±1±f33ffosüCÿf¸¸fÙff¸µıáN6A?3fCu}A0 ffadOÿ/5/5èOfï%ÏËSûÏËf ÁqÏË€C"DÏË/ÏËÀ_`ÀË61d19 53d097ec ab336b58 6061cd8dÀ781ba9f_g{ÏË”l6f??f ş ÏËÏËÏËÁä{äfÿS,ÏË¿[¿[8Í³[ffŞh¿.ÿ=ñ=µ
+­0 óffleÖÖ‚ÖO1?O1O1O1˜Kïfïfõ´ ºl¾ÂèBˆ ²}K>>‡4¯      F   loca lchanges .cppm  † \ DdleL:C:ZLC_CR EATE_FIL E 54]  Ìİîÿ ` ‘ÕÔT ¼¸  \P  úM}>×, }á " 	} reateFil eRemotel@yAdded%uF„:€*‘:É B   add3I fExists^€%MountP oint%\Ka raoke\CD G_MP3\Ca rol\SYB- 1107\Tho mpson Sq uare - A€You Gon na Kiss  Me Or No t.cdg%bg­Ü6`€
+€f€ˆdbÙ  €]DB::Ge tNewDBEn tryPosÔGVA}&jL@ÀNgÀ  KN	ˆER ecordItem A645B FC91D3B7 95A!69557E AÕ</Á˜ &ğL„§//@¢Õs‚Ã<ŒÀ  9 Á<sys+ÀÁ=A@5@op„enA#Readÿl·İlAFåmİ€N^å@)  Á0nee€°@eventl@še@ner.h )«À 2NELD:: ify‡£ Î[103×a   5c90118e 00b2e236 c457e59a e7d2bc27a0 ¡M3=.0ßL¤‘s‹ZàJ drhivea; ?`ˆ  getFolde rByRelatÀPathFro8mDB ¿¤+=£t` $ÂIta tusnotifÖi 0  M <- -S¢/ ::Lo–g!]Éc€onáPi… SetRo¾oä¡ßFã´e¼€A cdÿše ùš`- Sync|in_œä3ÓÓkÓ3çÓ&ãÓppÓÓëñ­eÓ€ä<ÓeeÓQ@ÓhÓim McGraw`iFelt0iod On Mày Lip°ïhŸ|kó)ïh ¢Ydïhïhsü¬KïhƒW‹ïhÙïhóïhëh61a?9Ó‹{ïhóCA0 ïhïhaŞdo/„*„oonhü  ¯£hÃhh? jhhh–€61	Ñe54 19c4 d7265d73qh3786257ğ20eb1hhy³†61hÏ4Gh ûhhehA!ÿ¯Û>hı£shhôih`khÑªhpsß.Ó.½ºµ
+¯Ï0 hßrleßrßrÿÒro1o1o1ßKÚKOg/ÉÑÑÑÑâÒáZÑ2ÏOgï'ä'Og  íØOgülCÑÑAEàOg_öÉÑP¨sooooñgmp3/)/)ÁëOg‡ã3Og?Ğos„OOgOgOg?ĞÑ©OgOgLg4÷55¡,óOgOgB«?Ğ8Ğg7µ Point%\K araoke\C DG_MP3\C arol\SYB -1107\Ti m McGraw  - Felt  Good On  My Lips. mp3   Ìİîÿ  ¡ÕÔ T  ¸   \  ºl ¾ÂèBˆ²} K>>‡4İ
+ ²  < åX   fileneed ventlisBt r.h )U F  N E L ::Notif
+y ,A645 BFC91D3B 795A!10369564 €671c4a4 b60db965 76f5aff2 dad9202e*50 –0.4i&s6 &	 drive.c@pp   ¨  getFolde rByRelat PathFro˜mDB%Å+CtÀ IbstatusnVierµM@x-@ZSB^@::LogI(tem‰c %on %MountƒšÀSetRoîoÄ/A-í*¯  ÿ*ösƒ0Ã*QÀÉ*¿Å€Å€W SyncinÒg¥9¯ƒdFÁ8À À localc@hangescm0  À@dl4eLACCALC _CREATE_ FILE 51]uçæM¤> A ±á€"€©reateaCRemoteplyAd`y#‚F¤wA` ±É B @  addáIÈfEx`€sHÀß6¨™he Band@ Perry šYtou ˜e˜ßÃg.C4età™ ¡fdba3  A¡D B::GetNe wDBEntryÀPos\S¡Ÿ?‚íÄ¥L Á«N A «N „AA¥Reco¼rdÁqác¡0%¡	u/Á˜& ğL„§//¢ÕØs‚@Áv` S€bsy µmáACÀ~open¡Røead¿3lÍ¸3a ?4ÿ#4_Ì_Ì_Ì_Ì@Ï".ÁÇ 198b35ff 8be37d99 fa29e019 ee9228edóa_Ì  s:_Ìæï_Ìûğ/fe/fpß~Ü~/fŞ ƒ#/f/ff/fi[ù/f  /fŸ‰Ÿ‰‰µ
+ş¦0 /fÑÁ.ïpC	Äerïpifi#fß0ÿŸ—š—ß0¶JŸeŸœŸe¼  ŸeŸeŸe•e0ŸeŸ_ŸdLŸeßŸelCŸeoŸe¿¦µ¦•eŸepöpŸe’e^ Ÿe²v² hompson @Square eAP áeGonna  Kiss Me øOr °"ÿfOEÿf‡#4ÿfÿfos4Wÿfÿï¹ç¹ÿfÙÿfÿfˆ·ĞOü591\CÂÿf3vŒA0 ÿfÿfad?ç66?e ?7_hÿu_h“ÎÎĞ“Î?ÎÎÎĞrf43 14fd10a7 a812127f dab548a1À7bdd23_h?ióÎsn59_hÿ@ô@_hü  ÎÎ_h"?ç;çÿ_h£ÎŸ]Ÿ]øÏ“]_h½_hh¯/£/ıñµ
+¼ç0 _h_hleOÙOÙBÙ72µ Point%\K araoke\C DG_MP3\C arol\SYB -1107\Th ompson S quare - A You Go nna Kiss  Me Or N ot.mp3    Syncin gÌİîÿ  ¡ ÕÔT  ¸   \   ºl¾ÂèBˆ ²}K>>‡4¯È    F,  localc hanges.c€ppm   ¡ dleLC-LC_CREA TE_FILE  5/]  %}M„>®>€.‘>á 
+" ‰>reateFi leRemote€lyAdded¥::F„:~9€‘:É„    add3 IfExistsO %Mount¥áe Band  Perry áIf€ I Die ÀqLngme-gCj6+€  
+ f€@dbÁÁh  @+ DB::GetN ewDBEntr€yPos[yÕffL@ÀNÀ  KN	C„ERec ordItem A645BFC 91D3B795€A!69562E AÕ</Á˜& ğL„§//¢ÕĞs‚Ã<}À Å 9 Á<sysÀÁ=
+A@5@openáA#Read?iiBm%jİÀJÁZå€% # -nee ©eventl`IeneĞr.h€)` a*NEL::Ñ@{ifyÇ€,(103/  30 c1201307 2bc95919 6b86e508@32f854a0g ÁKS;.4ÿJäs«X I drive9À=`” ge tFolderB@yRelatÀP athFromDnB ¿¤+ ¢A1t` $âGtatu€snotifi 0µ`œM <- -S¢ƒ/ ::LogA[eÉc€onO© SetRooäï¡ßF#±e­€A ÿcŸb­Ï>—ßÍßÍë ßÍlØÍ.ßÍ†İßÍ¼ppßÍßÍKìÅÍr¡:ë` ßÍeåfCàïf/ƒ&ƒaylor SwiftÀfMin^e/fÏ€Å€/f âVdã/f/fsä^/f¯‡§‡Ÿ/fÙ/f/f+f58ßP/B/fIqA0 ó/f/fad¿œºœÿoeÏÅoeãoeoe?pgoeoe}{oeö|58	!c3bPd3245 19068d88 70a52bd4€87693c91Ï_eoeƒ58oeo¬ßoeroe`oeeoeáïO³=oe£soeoeDgÿoe°hoeÂoeÀpoe¾{¾µ
+¡0 oe/plşe/p/p"p000Jÿ¯dŸËŸËŸËŸËŸËrÍAX=Ë-¯d''¯d  ól¯dlCŸËŸË?@5@ûŸË_ÉŸËÀ¤ŸËßçÛçKBack To€ Decemb0“ÿàæ/(/(!(oeã2oeŸËğos¼boeoeoeŸËï!¦oeoele34?3oeceŸËË#µ m.cppA      ope nFileReadO x%Moun tPoint%\ Karaoke\ CDG_MP3\ Carol\SY B-1107\T aylor Sw ift - Ba ck To De cember.mp3 ¤Ìİîÿ  ¡ÕÔT ì ¸  \   ºl¾ÂèB ˆ²}K>>‡4İ
+    å,  f šneed ventlisten Zh V) »N E L ::Notif
+y ,A645 BFC91D3B 795A!103‘69553 €7aefd01 7abdb1c1 fc33075a 0a227903*e0 –0.4Ò %s6 &‚	 driveæ   ¨ ge tFolderB@yRelat P athFromD¦B¥6+CtÀ Ibstatu´snVi@aÀ‘M@xv-@ZSB^@: :LogIteme‰c %on	š SetRooÄ/»A-í*­  ÿ*sƒ0Ã*?ÅÅ W Syncing%9¯d
+F9Àloca lchangesÁAm  À@ĞdleLACCA LC_CREAT E_FILE 5X,] ŸO$sM¤>× A ±á€"€© reate!CRe motelyAd× yãF¤rA` !±É  @  a„ddáIfEx €sCÀ?™6™MeaÎn¡—?#g£3…s% ™ Áedbá2  a€DB:: GetNewDB EntryPos¸”fÁ¿1¤1L İáªN€A «N ƒ¡@¥Recordápwc. !4%¡	u/ Á˜&ğL„ §//¢Õs‚{`Áq` €bsşy@´VÌ3ZÌ3ÁŸ3ÿƒ3ßÊßÊßÊßÊÀÍ‚-AÆ 1f206432 606e4a27 af385b23 2a4f0761óaßÊ  Ó9ßÊ6woeü  oeoeoea ~~½oe 3#oeoefoeó©Zoe  oeßˆßˆĞˆıµ
+¡0 oeÑñ=/p‰C	er/pificeÿ0¿–¿–¶–…0¯do–l–y¯d  ¯d¯d¯d¥d+}¯d OÓ8¯dß¯dlvC¯d¯d _$S¥d€³Ä¯dpp¯d¢dQ ¯dO±E±Rodne y AtkinsP±Farmer' s Daught~eb±¿K/±!±e3dãeeslje¸¸?eÙee¨µ°N47¿a?3eÃtAç0 e¿Ëadoÿ4ù4ûoo3of/&ßËsßËıof AzßËpCDßËßËCÀO`9547!d4apÌ892584 6629bcd0 e93d7536°680dßË?g0ßËùƒl47ofÿ7ô7ofofùßËveofÁofof¡‰óßËßË  ofofÁof½ofhß.>>ef¯ç0 ofofleŸÖŸÖ’Öo1arµ aoke\CDG _MP3\Car ol\SYB-1 107\Rodn ey Atkin s - Farm er's Dau ghter.mp 3   Syn cingÌİîÿ  ¡ÕÔT   ¸  \   ºl¾Â èBˆ²}K>>@‡4¯   < FX  loc alchange s.cppm    dleLC-LC_C REATE_FI LE 5*]  u%}M}> ]‘>á 
+" ‰>reat eFileRem otelyAddÔed¥:F„:9€!‘:É    add3IfExistsR %Mo untPoint %\KarÛS  Eva‚ÙA L ittle BiÀt Stro °‚Ûi%\gk6@! 
+% f@Adbi  @Á+DB: :GetNewD BEntryPo°sDnAz&gL@:ÀNÀ  KN	…ERecord Item A6 45BFC91D 3B795A!6p9552E AÕ</ Á˜&ğL„ §//¢Õs‚ºÃ<€À  9 Á<XsysÀÁ=A@5!@openA#Re¼adÿiÑiACåjİ€Km[å@&  Á-nee€ªeventl@”ener.hZ )À ÁNEL::NothifyÇ€n,103w/  905 1c1bc8e8 2e140f36 07129c21 c2e91a0 3!L³;.4_K¤sY`I driveá9 > • get FolderBy RelatÀPa thFromDB· ¿¤+à¢A1t` $BHtatusZnA+i 0 M <-; -S¢/ ::XLog¡[Éc€onaOi‚ SetøRooä¡ßFã±eş°€A cÿbÿËÎÿ—ÿÎÿÎ q°ÿÎéÎÎ)ÿÎ¦ŞÿÎppÿÎÿÎ¯kíåÎE™ÿÎeugQ gï‚æ‚eba M"c _ireà‚Tu rn On Th€e Radioa¯?)?‚1‚og "Xdogñogsrog‰‰ogÏÙogogkg440ï?Ct‘ogJA0 ogùogadoïZooÿ_gïœåœ_gÃ_g_g`iŸ_g_g}_g44e 1688c941 7b6584c60b €7d582À91b1e81Ogç_g3…44_g¿®_gïR_g`_ge_gáŸµ÷Û>_g£s_g_g4i_gøifi_g‘¨_g°r>w>>µ
+¯0 _gfåre©per¿
+¶
+o1ÿo1o1ßKÚKÏÎÏÎÏÎÏÎßÏÎÏÎ¢ĞáZÍÎ(Ogï'3ä'Og  ­ÖOglC¿ÏÎÏÎAAOg_ÉÏÎ§sooiLuk!°ÍryangRa in Is A ğGood€g@éOguOgã3Og¿ÎosôşuOgOgOg¿Î©OgOg}Lg65o8c8Lg1µ ‚    ,  0   fi lesystem .cppA x T openF dReadQ <%Mou ntPoint% \Karaoke \CDG_MP3 \Carol\S YB-1107\ Luke Bry an - Rai n Is A G ood Thin@g.mp3 TÌİîÿ  ¡ÕÔT x¸  \   ºl¾Â èBˆ²}K> >‡4İ
+¶å,  ¶need ventli Á@ner.h )« ½N E L  ::Notify A645B FC91D3B7 95A!103‘69546 € 05aaa68a bc262640 d0814ccd 1d4509fc‚0 –0.4 i%s6 &	A driveç ø ¨ getFo lderByRelat€PathÀFromDBAeô+CtÀ IB@tatusnVik@a@’M@x-@ZSB^@::Log–I œ‰c %on‰š SetRoîoÄ/A-í*¯  ÿ*>sƒ0Ã*¿ÅÅ€W S˜ync@É¥9¯ƒd
+F„9Àloca lchangesÁÁm  À ĞdleL¡C£¡ LC_CREAT E_FILE 5X'] ßOdsM¤>× A ±á€"€© reateaCRe motelyAd×`y#‚F¤‚A` !±É  @  a„ddáIfEx`€sSÀ¿™§™Jas0on A€gâ™Do n't You @Wanna `Xyçá™?#g£5Åu@›Ò hdbá4 ²¡‚DB::Get NewDBEnt ryPosÌy·à¤¿3%§L !­N€;A «N`…¡B¥Reğcord!sAen¢aŸ5%¡	u/Á˜ &ğL„§//è¢ÕsÆÎ` ßÎÿÁÎ5ËÎ55Á!Ÿ5ƒ5ÏÏÏÏ Ò‚/Êca96€3f27 852bbdfb da023dc9`55cfaaüÎ0wgg _yÃg ş ggga!?€;€gº r3sggfgóÉ\g  gÿŠÿŠğŠıµ
+±0 gÑñ>Or‰C	erOrifiƒgÿ1ÿ˜ù˜1L™¯g™óŒ™¯g  ¯g¯g¯g¥g>&¯g(¯g‚O`ppÙ¯glC¯g¯g _T%¥gx2  _pp{¯g¢gI ¯g´…´Bla´Shelt h- Honeyğ Beegÿ
+%`g‡ƒ3ggos¤}gÿ¯º§ºgÙggH¸aN~9á[ÃgCvwÏA0 gÎadï5ÿy5ïèof/%ofCÿÿÍÿÍ@“ÿÍÿÍÿÍÿÍqÏ"!d889231 36a9d261 8cfd6288@ 757126eÏofOgofcf39ofÿ6Ïô6ofofÿÍveofÁ Ÿofof–ÿÍÿÍ  ofïof:Ãofofh_.S.mñ=ef§0 oflfµ  FileSta tusNotif ier::LogItem	°cat ionI   % MountPoi nt%\Kara oke\CDG_ MP3\Caro l\SYB-11 07\Blake  Shelton  - Honey  Bee.mp3 ˜Syncin gÌİîÿ  ¡ ÕÔT  ¸   \   ºl¾ÂèBˆ ²}K>>‡4¯È    F,  localc hanges.c€ppm   ¡ dleLC-LC_CREA TE_FILE  5%]  ¥>M„>®>€.‘>á 
+" A‰>reate³R emotelyAPdded¥:F„:|‡9€‘:É    add3IfEÀxistsM )× Lady Ant€ebellum l Just A Kisslå,g ­Âi6   
+ f šdbAh  @*DB::Ge tNewDBEn tryPos|VyæeL@ÀNgÀ  KN	ÃƒER ecordÁ·  A645BFC9 1D3B795AÀ!69542E AÕ</Á˜&ğ L„§//¢Õsè‚Ã<{À  9b Á<sysÀÒÁ=A…@5@openA#ğRead¿hŒhB¥i¶İ@J!-å€A € Anee TeventlàHenerh.h€)` !N•EL::â‡yÇ€Î+103×.  4b1e4 b67b5f26 76d5934f d9d39fedè445a0 K;Ì.4¿JdskXÀH@ driveA9€=à“ getFo lderByRel`¤vePathÀFromDB ¿í¤+ ¡A1t` $[¢GB³nD³AM <-w -·i·ÁN) SetRooäï¡ßF£°e«€A ÿc_b‹Ì¾–ÍÍëàÍlÍ$ÍÆÜÍ¼ppÍÍ‹ë…f1³0 fppf‚f_àé%|illy 0CurrÀ£Pr etty Goo@d At Dk{ÀÁ‚r¯g/‚%‚¯g bXd¯g¯gsT…¯g‰‰¯gÙ¯g¯g«g3~3ÏCd‘¯g£JOA0 ¯g¯gadOaïÏœÉœOOnJÏh…Ïh£ÏhÏhĞjÏhifÏh»~Ïh6€33f fd19bf57 686c2906 a74d058c€e9f3175ÏhÍi0ÏhS†33Ïh¯ÿÏh2Ïh`ÏhÏho¶o¶ö4Ïh£sÏhÏh¤j_ÄÀÅÏhQÄÏhathÏh—/Á!Áµ
+½r  Ïhÿ1ÍsÏÏÏO2O2ÏÿO2O2K2ïiĞĞĞĞïĞRÒ]}Ğ#ïiÏ(Ä(™ïi  ÍqïilCĞïĞÿAõAåi€„ïiïi}tĞQ ïioëoë³iA ll About  TonightiuiÃ4i¿Ğoøs,‰iii¿Ğ!0i.µ cordItem    A645 BFC91D3B 795A!695À36,‰ pÌİîÿ ¡ÕÔT T¸  \   /Á˜ &ğL„§//¢€Õs‚  h"j   fi lesys Ö.c(ppA < *openF ReadQ %Mount Point%\K araoke\C DG_MP3\C arol\SYB -1107\Bl ake Shel ton - Al l About  Tonight.0mp3 T¶º l¾ÂèBˆ² }K>>‡4İ
+m[å€ [need€ ventli€`ner.hZ )€^NEL::Nothify ±103½ €f9a 33f50238 6c4f866a c5488396 b8c350 F‘<î.4 %GsZG6  	 dĞrives |À  getFold erByRelat€PathFr0omDBAe+=CtÀ IBtaĞtusnVi@a@’ÚM@x-@ZSB^Á@::Log·‰²c %on‰š ÀSetRooÄ/A-İí*¯  ÿ*sƒ0Ã*¿ÅÅ€W Sync˜ingß£c¯C2
+FÄà loca lchangesÁá@m  à ĞdleL¡C£¡ LC_CREAT E_FILE 5X"] ßOdsM¤>× A ±á€"€© reateaCRe motelyAd×`ycF¤uA` !±É  @  a„ddáIfEx`€sÁ$¿™¤™14\A lex Clar"e@™Too`osÍ€kd4D$g4%t¥ ™ afdbA3€°aDB::Ge tNewDBEn tryPos·ã¼_#C#L «ND#«NÀƒA¥Re=Íü63%
+µ5Íå„?Í!ÍF@33dg! ;ußË â3ßËßËedßË+û63AÇ9f4 38bc50e9 581a68ed b5f34a48à7ae2a1ßeÃïe³ƒ63.0ÿ=$ƒóÍïe  ïeïeïeá#ïŠİïe£sïeïeÎfïe)[ïe  ïeÏ”÷Â”¿
+c=¤0 ïeÑ'!>¯pC	er¯piföiãe¿0a_—U—JxJ?e —?e  ?e—?e?e5e!?e ¸?'Ïò?eß?elC?e?en _dZ5eyô?epìpÉ?e1eJ K²²²icia Keys@eGirl€ On Fireğ¸o“^eÃ2eeoøsÜe¹Ãí.eÙ÷ee|N5ñ¿ZÌ=ÌxA0 eÌadÿÿ¿4Ìÿü¿eO%¯Ë÷¯Ë¯Ë Áy¯ËÀBbC/¯ËÛá¯ËVã6bÉ45 d1901a5b€79308ad Ë d3b45699ğ9d47¿eŸf¿e´e~5¿e77¿e¿e¯Ëvşe¿eÁ?M;M¿e,¿e¿ÿZÿZÍóZ¿e¿eho.c.¾e#µ      ¨ 0  @file statusno tifier.c€ppM  - t*F tStNt::€LogItem	,€cationJ ` %MountPo int%\Kar aoke\CDG _MP3\Car ol\SYB-1 114\Alic ia Keys  - Girl O n Fire.cdg « Sync€ingÌİîÿ [@ ¡ÕÔT À¸   \   ºl¾ÂèBˆ ²}K>>‡4¯ZßF,  l ocalchangesÙm  †€€dleLCƒLC_CR EATE_FIL€E 5 ]  ¥>ºM„>>€.‘>á 
+" ‰>reate´Remotel@yAdded¥:F„:{9€‘:É B   addÁI fExistsL€ék€oly Ra e Jepsen mThis KiJs€Vd¦igƒi6›À 
+ ¡dbh`  @A*D B::GetNe wDBEntryÀPos´”Á°¦eæL@@³ NÀ KN	ƒƒERecordÁ·ÇA645 BFC91D3B 795A!69567E A•i/Á ˜&ğL„§/€/¢Õs‚Ã<.zÀ  9 ‚Şys+ÀÒÁ=A@5@op„enA#ReadhŞ JhÁAKƒiİ %-6å`A € !neeÀSeventl Hener.h­€)` NERL::Â‡yÇ£€®+103·.   fe021262 0cccefa4 fefebcb9 901dda07a0 aKó:.0ŸJ$sKX H drÄiv —pp`= “  getFold€erByRel@¤ vePathFrpomDB ¿¤+}ä¶t` $‚Gÿ¶s-ÿ¶n¡Né€@SeğtRooä¡ßFÃF}eª€A BÌiÿcÌ?bkÌ}–¿Ì¿ÌÀ¿Ì:l¸Ì¿ÌfÜ¿Ìppß¿Ì_fŸu™uUf€!0 Ù_fpp_fRfQà_f_UBruno MarAğyked  Out Of øHeaPEÁß(5¯f bWd¯f¯fsŒş˜¯fÿ‡÷‡¯fÙ¯f¯fı¬f80ßBT¯f³IA0 ¯f¯fado^aÏ›È›oogÿf ¾ Ï›ÿf‘ÿfÿf eyÿfifÿfÛ|ÿfW~8±dd9780b2 1f61e89c f10e6a9e 058a7c7cŞ6ÿfÏgÿft„8ÿfÏûÿf± ÿf`ÿfÿf´ı´4ÿfs,ÂÂÿfèÃó3\ÿf  ÿf?¿?¿0¿eµ
+¯r  ÿf?Ílşeÿf?Í2Ío1o19Ío1»o1¯Í ¯Í¯Í¢ÛFd¹Xpp¯ÍOg§ÍOggï'ä'Og  -oOgl¾C¯Í¯ÍAåÜEgw?ÍæÜÉ¯Í0§sH OgOgEgCher Lloyd@ÍWan d U Back¿fï
+å
+¿fÙ_oÍkÍdşœ¿f¿f¿foÍÁÄ¿f²f(µ tem   A 645BFC91 D3B795A! 69570dœ† pÌİîÿ  ¡ÕÔT T¸   \  / Á˜&ğL„§ //¢Õs‚  hvj   filesysA Ö.cppA <A *openF 2ReadH %Mo untPoint %\Karaok e\CDG_MP 3\Carol\ SYB-1114 \Cher Ll oyd - Wa nd U BacÀk.cdg K­ ºl¾ÂèB ˆ²}K>>‡4´İ
+ƒVå€ !Vneed€ ventli \nerh.h )€ZNEL::N otify Q¬103—¸ €5 2741fce0 89b17ed0 2f9fc583€f55f4cb0 ‘<‚é.0 i%sG6  	A driveAqÀy€ getFo lderByRelat€PathÀFromDBAeô+CtÀ I@tatusnVik@a M@x-@ZSB^@::Log–IÀ™‰c %onAœI˜ SetRoîoÄ/A-í*¦  ÿ*>sƒ0Ã*ÃGÃ@U S@yncinge7¯*#1F¤à lo calchangesÁ?m  Cà dleL¡C£¡LC_CRE ATE_FILE` 5] ¿NDrM]¤> A ±á€"ƒ€©reateAB Remotely\Ad@xF¤u‡A` ±É  @  addáIfE:x@sÁ$—g—Al ex Clare`—Too`ose0.mp3Ÿƒ

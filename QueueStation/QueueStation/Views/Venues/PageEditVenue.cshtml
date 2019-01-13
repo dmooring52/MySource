@@ -1,0 +1,83 @@
+﻿@model QueueStation.Controllers.MVCVenues
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+@functions{
+    public string VenuesShowVenue()
+    {
+        if (Model.command == "add")
+        {
+            return "";
+        }
+        else
+        {
+            return "VenueKey";
+        }
+    }
+    public string AddStyle()
+    {
+        if (Model.command != "add")
+        {
+            return "display: none";
+        }
+        else
+        {
+            return "";
+        }
+    }
+}
+
+<div class="row-fluid">
+    <div class="span6">
+        <section id="VenuesEditForm">
+            @using (Html.BeginForm("PageSetVenue", "Venues", FormMethod.Post))
+            {
+                <fieldset class="form-horizontal">
+                    <br />
+                    <br />
+                    <legend>@Html.Raw((Model == null || Model.VenueKey == null || Model.VenueKey.Trim().Length == 0) ? "Add Venue" : "Venue: " + Model.VenueKey)</legend>
+                    <div class="control-group">
+                        <table>
+                            <tr style="@Html.Raw(AddStyle())">
+                                <td><label class="control-label">Key</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenueKey, new { @class = "standard-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Name</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenueName, new { @class = "standard-wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Email</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenueEmail, new { @class = "wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Address</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenueAddress, new { @class = "wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Contact</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenueContact, new { @class = "wide-box" })</div></td>
+                            </tr>
+                            <tr>
+                                <td><label class="control-label">Phone</label></td>
+                                <td><div class="controls">@Html.TextBoxFor(m => m.VenuePhone, new { @class = "wide-box" })</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-actions no-color">
+                        <br />
+                        <input id="saveEdit" name="command" type="submit" value="Done" class="btn" />
+                        <input id="removeItem" name="command" type="submit" value="Remove" class="btn"/>
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>
+

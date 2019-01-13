@@ -1,0 +1,47 @@
+﻿@helper CreateTable(QueueStation.Models.MvcList m)
+{
+    <form action="/Home/Index">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>State</td>
+                <td>Singer</td>
+                <td>Song</td>
+                <td>Artist</td>
+                <td>Note</td>
+                <td>Link</td>
+            </tr>
+        </thead>
+        @foreach (QueueStation.Controllers.MVCQueue tscqueue in m)
+        {
+            <tr>
+                @if (tscqueue.QueueState.ToUpper()=="FINISHED")
+                { 
+                    <td><img id="finimg" src="/Images/State_Finished.png" alt="Finished" /></td>
+                }
+                else if (tscqueue.QueueState.ToUpper() == "PENDING")
+                {
+                    <td><img src="/Images/State_Pending.png" alt="Finished" onclick="EditQueueEntry(@tscqueue.EventKey, @tscqueue.SingerKey, @tscqueue.QueueRound)" /></td>
+                }
+                else if (tscqueue.QueueState.ToUpper() == "NOT HERE")
+                {
+                    <td><img src="/Images/State_NotHereYet.png" alt="Finished" onclick="EditQueueEntry(@tscqueue.EventKey, @tscqueue.SingerKey, @tscqueue.QueueRound)" /></td>
+                }
+                else if (tscqueue.QueueState.ToUpper() == "GONE HOME")
+                {
+                    <td><img src="/Images/State_GoneHome.png" alt="Finished" onclick="EditQueueEntry(@tscqueue.EventKey, @tscqueue.SingerKey, @tscqueue.QueueRound)" /></td>
+                }
+                else
+                {
+                    <td><img src="/Images/State_Pending.png" alt="Finished" onclick="EditQueueEntry(@tscqueue.EventKey, @tscqueue.SingerKey, @tscqueue.QueueRound)" /></td>
+                }
+                <td nowrap>@tscqueue.SingerKey</td>
+                <td nowrap>@tscqueue.QueueSong</td>
+                <td nowrap>@tscqueue.QueueArtist</td>
+                <td nowrap>@tscqueue.QueueNote</td>
+                <td nowrap>@tscqueue.QueueLink</td>
+            </tr>
+        }
+    </table>
+        </form>
+}

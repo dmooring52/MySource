@@ -1,0 +1,26 @@
+﻿@model QueueStation.Models.TSCSongs
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        try
+        {
+            if (Model != null && Model.OneDriveMP4 != null && Model.OneDriveMP4.Trim().Length > 0)
+            {
+                Response.Redirect(Model.OneDriveMP4);
+            }
+            else
+            {
+                Response.Redirect("/Home/Index");
+            }
+        }
+        catch
+        {
+            Response.Redirect("/Home/Index");
+        }
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}

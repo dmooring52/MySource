@@ -1,0 +1,9 @@
+<publishData>
+  <publishProfile
+    publishUrl="https://dmooring52-001-site3.smarterasp.net:8172/msdeploy.axd"
+    msdeploySite="dmooring52-001-site3"
+    destinationAppUrl="http://dmooring52-001-site3.smarterasp.net/"
+    profileName="AutoSmarter"
+    publishMethod="MSDeploy"
+    userName="ifc\dmooring52-001" />
+</publishData>

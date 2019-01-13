@@ -1,0 +1,43 @@
+﻿@model QueueStation.Controllers.EventsGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+@using (Html.BeginForm("PageAddSaveRevert", "Events", FormMethod.Post, new { id = "submitForm" }))
+{
+    <div>
+        <b>&nbsp;</b>
+        @Model.grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            columns: Model.grid.Columns(
+            Model.grid.Column("EventName", "Name", format: (item) => Html.Raw(Model.EventData(item.EventKey, "EventName", item.EventName)), canSort: false),
+                Model.grid.Column("EventDate", "Date", format: (item) => Html.Raw(Model.EventData(item.EventKey, "EventDate", item.EventDate)), canSort: false),
+                Model.grid.Column("EventAddress", "Address", format: (item) => Html.Raw(Model.EventData(item.EventKey, "EventAddress", item.EventAddress)), canSort: false),
+                Model.grid.Column("EventEmail", "Email", format: (item) => Html.Raw(Model.EventData(item.EventKey, "EventEmail", item.EventEmail)), canSort: false),
+            Model.grid.Column(null, null, format: item => Html.ActionLink("Edit", "PageEditEvent", "Events", new { item.VenueKey, item.EventKey }, new { @style = "font-size:smaller;text-decoration:underline;" }))
+        )
+    )
+    </div>
+    if (SessionBag.Current.IsKj == true)
+    { 
+    <div class="form-actions no-color">
+        <input id="addQueue" name="command" type="submit" value="Add" class="btn" />
+        <input id="saveQueue" name="command" type="submit" value="Save" class="btn" />
+        <input id="revertQueue" name="command" type="submit" value="Revert" class="btn" />
+    </div>
+    }
+}
+

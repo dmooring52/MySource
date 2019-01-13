@@ -1,0 +1,16 @@
+﻿@model QueueStation.Controllers.RootData
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        Response.Redirect("/Home/Index");
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+
+<h2>EventChange</h2>
+

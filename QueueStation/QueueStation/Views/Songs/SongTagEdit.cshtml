@@ -1,0 +1,11 @@
+﻿@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+        Response.Redirect("/Songs/SongsView");
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+

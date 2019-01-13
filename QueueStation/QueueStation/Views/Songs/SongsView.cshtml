@@ -1,0 +1,65 @@
+﻿@model QueueStation.Controllers.SongsGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<script>
+    function SetOffset(offset)
+    {
+        document.getElementById("idoffset").value = offset;
+    }
+</script>
+
+@using (Html.BeginForm("PageNavigate", "Songs", FormMethod.Post, new { id = "submitForm" }))
+{
+    <div>
+        <div class="form-actions no-color">
+            <table style="border-spacing:10px; border-collapse:separate">
+                <tr>
+                    <td><input id="n1" type="image" src="/Images/GoToNext.jpg" alt="Pg Up" onclick="SetOffset('1')" /></td>
+                    <td><input id="p1" type="image" src="/Images/GoToPrevious.jpg" alt="Pg Dn" onclick="SetOffset('-1')" /></td>
+                    <td><div style="width:60px"></div></td>
+                    <td>
+                        @Html.RadioButtonFor(model => model.sortby, "Title", new { onchange = "this.form.submit();" })
+                        @Html.Label("title", "Title ", new { @class = "h4", @name = "MyTitle" })&nbsp;
+                        @Html.RadioButtonFor(model => model.sortby, "Artist", new { onchange = "this.form.submit();" })
+                        @Html.Label("artist", "Artist", new { @class = "h4", @name = "MyArtist" })
+                    </td>
+                    <td>@Html.TextBoxFor(model => model.searchstring, new { @style = "width:500px", @class = "h4" })</td>
+                    <td><input id="f1" type="image" src="/Images/Find.jpg" alt="Find" onclick="SetOffset()" /></td>
+                    <td>@Html.CheckBoxFor(model => model.bydisk, new { onchange = "this.form.submit();" })</td>
+                    <td>Disk</td>
+                    <td><input id="idoffset" type="text" name="txtoffset" hidden="hidden" /></td>
+                </tr>
+            </table>
+        </div>
+        @Model.grid.GetHtml(
+        tableStyle: "webgrid-table",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        mode: WebGridPagerModes.All,
+        columns: Model.grid.Columns(
+            Model.grid.Column("Title", "Title", format: (item) => Html.Raw(Model.SongData(item.SongKey, "Title", item.Title)), canSort: false),
+            Model.grid.Column("Artist", "Artist", format: (item) => Html.Raw(Model.SongData(item.SongKey, "Artist", item.Artist)), canSort: false),
+            Model.grid.Column("Disk", "Disk", format: (item) => Html.Raw(Model.SongData(item.SongKey, "Disk", item.Disk)), canSort: false),
+            Model.grid.Column(null, "Link", format: item => Html.ActionLink("url", "SongLaunch", "Songs", new { item.Title, item.Artist, item.Disk }, new { @style = "font-size:smaller;text-decoration:underline;" })),
+            Model.grid.Column(null, "Tag", format: item => Html.ActionLink("tag", "SongTag", "Songs", new { item.Title, item.Artist, item.Disk }, new { @style = "font-size:smaller;text-decoration:underline;" }))
+            )
+        )
+        <table style="border-spacing:10px; border-collapse:separate">
+            <tr>
+                <td><input id="n2" type="image" src="/Images/GoToNext.jpg" alt="Pg Up" onclick="SetOffset('1')" /></td>
+            </tr>
+        </table>
+    </div>
+}

@@ -1,0 +1,46 @@
+﻿@model QueueStation.Controllers.SingersGrid
+
+@{
+    if (SessionBag.Current.HasCredentials == true)
+    {
+    }
+    else
+    {
+        Response.Redirect("/CredPage/CredPage");
+    }
+}
+
+<script>
+    function SetOffset(offset)
+    {
+        document.getElementById("idoffset").value = offset;
+    }
+</script>
+
+@using (Html.BeginForm("SongTag", "Songs", FormMethod.Post, new { id = "submitForm" }))
+{
+    <div>
+        <div class="form-actions no-color">
+            <table style="border-spacing:10px; border-collapse:separate">
+                <tr>
+                </tr>
+            </table>
+        </div>
+        @Model.grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            columns: Model.grid.Columns(
+                Model.grid.Column("SingerKey", "Key", format: (item) => Html.Raw(Model.SingerData(item.SingerKey, "SingerKey", item.SingerKey)), canSort: false),
+                Model.grid.Column(null, null, format: item => Html.ActionLink("Add", "SongTagEdit", "Songs", new { item.SingerKey, Model.song.Title, Model.song.Artist, Model.song.Disk }, new { style = "font-size:smaller;text-decoration:underline;" }))
+        ))
+        <table style="border-spacing:10px; border-collapse:separate">
+            <tr>
+            </tr>
+        </table>
+    </div>
+}
